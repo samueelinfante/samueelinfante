@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Lógica de Programación</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            font-family: 'Verdana', sans-serif;
+            color: #2d3a4f;
+        }
+        .btn {
+            background-color: #2d7ec8;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin: 10px;
+        }
+        .btn:hover {
+            background-color: #1e5b88;
+        }
+        .section {
+            display: none;
+        }
+        .visible {
+            display: block;
+        }
+        .result {
+            font-weight: bold;
+            color: #2d7ec8;
+            margin-top: 10px;
+        }
+        .feedback {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        input[type="number"], input[type="text"], textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .exercise-container {
+            margin-bottom: 30px;
+        }
+        .choices {
+            margin-top: 15px;
+        }
+        .choices button {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Pantalla de Inicio -->
+    <div id="inicio" class="container visible text-center">
+        <h1>Bienvenidos a los Ejercicios de Lógica Interactivos</h1>
+        <p>Aprende programación jugando. ¡Diviértete mientras desarrollas habilidades lógicas y de programación!</p>
+        <div>
+            <button onclick="showSection('primaria')" class="btn">Primaria</button>
+            <button onclick="showSection('secundaria')" class="btn">Secundaria</button>
+            <button onclick="showSection('universidad')" class="btn">Universidad</button>
+            <button onclick="showSection('sobre-nosotros')" class="btn">Sobre Nosotros</button>
+            <button onclick="showSection('contacto')" class="btn">Contacto</button>
+        </div>
+    </div>
+
+    <!-- Sección Primaria -->
+    <div id="primaria" class="section container">
+        <h2>Ejercicios de Primaria</h2>
+        
+        <!-- Ejercicio de Secuencias -->
+        <div class="exercise-container">
+            <p>¿Qué número sigue en la secuencia: 2, 4, 6, 8, 10, ...?</p>
+            <div class="choices">
+                <button onclick="checkSeq(12)" class="btn">12</button>
+                <button onclick="checkSeq(14)" class="btn">14</button>
+                <button onclick="checkSeq(11)" class="btn">11</button>
+            </div>
+            <p id="seq-result" class="result"></p>
+            <p id="seq-feedback" class="feedback"></p>
+        </div>
+        
+        <!-- Ejercicio de Comparaciones -->
+        <div class="exercise-container">
+            <p>¿Cuál es mayor: 8 o 15?</p>
+            <div class="choices">
+                <button onclick="checkComp('8')" class="btn">8</button>
+                <button onclick="checkComp('15')" class="btn">15</button>
+            </div>
+            <p id="comp-result" class="result"></p>
+            <p id="comp-feedback" class="feedback"></p>
+        </div>
+        
+        <!-- Ejercicio de Condicionales -->
+        <div class="exercise-container">
+            <p>Si está lloviendo, ¿qué debes llevar?</p>
+            <div class="choices">
+                <button onclick="checkCond('paraguas')" class="btn">Paraguas</button>
+                <button onclick="checkCond('gafas')" class="btn">Gafas</button>
+                <button onclick="checkCond('sombrero')" class="btn">Sombrero</button>
+            </div>
+            <p id="cond-result" class="result"></p>
+            <p id="cond-feedback" class="feedback"></p>
+        </div>
+    </div>
+
+    <!-- Sección Secundaria -->
+    <div id="secundaria" class="section container">
+        <h2>Ejercicios de Secundaria</h2>
+
+        <!-- Suma de Números Naturales -->
+        <div class="exercise-container">
+            <p>Calcula la suma de todos los números naturales hasta el número que elijas.</p>
+            <input id="sumInput" type="number" placeholder="Introduce un número">
+            <button onclick="checkSum()" class="btn">Calcular Suma</button>
+            <p id="sum-result" class="result"></p>
+            <p id="sum-feedback" class="feedback"></p>
+        </div>
+
+        <!-- Ejercicio de Factorial -->
+        <div class="exercise-container">
+            <p>Calcula el factorial de un número.</p>
+            <input id="factorialInput" type="number" placeholder="Introduce un número">
+            <button onclick="calculateFactorial()" class="btn">Calcular Factorial</button>
+            <p id="factorial-result" class="result"></p>
+            <p id="factorial-feedback" class="feedback"></p>
+        </div>
+
+        <!-- Ejercicio de Fibonacci -->
+        <div class="exercise-container">
+            <p>Genera los primeros N números de la secuencia Fibonacci.</p>
+            <input id="fibonacciInput" type="number" placeholder="Introduce un número">
+            <button onclick="generateFibonacci()" class="btn">Generar Fibonacci</button>
+            <p id="fibonacci-result" class="result"></p>
+            <p id="fibonacci-feedback" class="feedback"></p>
+        </div>
+    </div>
+
+    <!-- Sección Universidad -->
+    <div id="universidad" class="section container">
+        <h2>Ejercicios de Universidad</h2>
+
+        <!-- Calculadora -->
+        <div class="exercise-container">
+            <h3>Calculadora Interactiva</h3>
+            <p>Realiza operaciones básicas:</p>
+            <input id="num1" type="number" placeholder="Número 1">
+            <input id="num2" type="number" placeholder="Número 2">
+            <div class="choices">
+                <button onclick="calculate('sum')" class="btn">Sumar</button>
+                <button onclick="calculate('subtract')" class="btn">Restar</button>
+                <button onclick="calculate('multiply')" class="btn">Multiplicar</button>
+                <button onclick="calculate('divide')" class="btn">Dividir</button>
+            </div>
+            <p id="calc-result" class="result"></p>
+            <p id="calc-feedback" class="feedback"></p>
+        </div>
+
+        <!-- Conversión de Binario a Decimal -->
+        <div class="exercise-container">
+            <h3>Conversión de Números</h3>
+            <p>Convierte un número binario a decimal:</p>
+            <input id="binToDecimal" type="text" placeholder="Introduce un número binario">
+            <button onclick="convertBinToDecimal()" class="btn">Convertir a Decimal</button>
+            <p id="binToDecimal-result" class="result"></p>
+            <p id="binToDecimal-feedback" class="feedback"></p>
+        </div>
+        <div class="exercise-container">
+            <p>Convierte un número decimal a binario:</p>
+            <input id="decToBin" type="number" placeholder="Introduce un número decimal">
+            <button onclick="convertDecimalToBin()" class="btn">Convertir a Binario</button>
+            <p id="decToBin-result" class="result"></p>
+            <p id="decToBin-feedback" class="feedback"></p>
+        </div>
+    </div>
+
+    <!-- Sección Sobre Nosotros -->
+    <div id="sobre-nosotros" class="section container">
+        <h2>Sobre Nosotros</h2>
+        <p>Somos estudiantes de la Universidad Estatal de Milagro (UNEMI), apasionados por la programación y la enseñanza. Nuestra misión es hacer que el aprendizaje de la lógica de programación sea divertido y accesible para estudiantes de todas las edades.</p>
+    </div>
+
+    <!-- Sección de Contacto -->
+    <div id="contacto" class="section container">
+        <h2>Contacto</h2>
+        <form>
+            <input type="text" placeholder="Tu nombre" class="btn">
+            <input type="email" placeholder="Tu correo" class="btn">
+            <textarea placeholder="Tu mensaje" class="btn"></textarea>
+            <button type="submit" class="btn">Enviar</button>
+        </form>
+    </div>
+
+    <script>
+        function showSection(section) {
+            document.querySelectorAll('.section').forEach(function(sec) {
+                sec.classList.remove('visible');
+            });
+            document.getElementById(section).classList.add('visible');
+        }
+
+        // Ejercicio de Secuencias
+        function checkSeq(answer) {
+            if (answer === 12) {
+                document.getElementById("seq-result").innerText = "¡Correcto! El número que sigue es 12.";
+                document.getElementById("seq-feedback").innerText = "¡Bien hecho! Sigue practicando.";
+            } else {
+                document.getElementById("seq-result").innerText = "¡Incorrecto!";
+                document.getElementById("seq-feedback").innerText = "Intenta de nuevo. Piensa en el patrón.";
+            }
+        }
+
+        // Ejercicio de Comparaciones
+        function checkComp(answer) {
+            if (answer === '15') {
+                document.getElementById("comp-result").innerText = "¡Correcto! 15 es mayor que 8.";
+                document.getElementById("comp-feedback").innerText = "¡Excelente! Sigue practicando.";
+            } else {
+                document.getElementById("comp-result").innerText = "¡Incorrecto!";
+                document.getElementById("comp-feedback").innerText = "Recuerda, 15 es mayor que 8.";
+            }
+        }
+
+        // Ejercicio de Condicionales
+        function checkCond(answer) {
+            if (answer === 'paraguas') {
+                document.getElementById("cond-result").innerText = "¡Correcto! Debes llevar un paraguas.";
+                document.getElementById("cond-feedback").innerText = "¡Excelente elección!";
+            } else {
+                document.getElementById("cond-result").innerText = "¡Incorrecto!";
+                document.getElementById("cond-feedback").innerText = "Recuerda, si está lloviendo, un paraguas es la mejor opción.";
+            }
+        }
+
+        // Suma de Números Naturales
+        function checkSum() {
+            const num = parseInt(document.getElementById("sumInput").value);
+            if (isNaN(num) || num <= 0) {
+                document.getElementById("sum-result").innerText = "Por favor ingresa un número válido.";
+            } else {
+                const sum = (num * (num + 1)) / 2;
+                document.getElementById("sum-result").innerText = `La suma de los números naturales hasta ${num} es: ${sum}`;
+                document.getElementById("sum-feedback").innerText = "¡Bien hecho! Sigue practicando.";
+            }
+        }
+
+        // Factorial
+        function calculateFactorial() {
+            const num = parseInt(document.getElementById("factorialInput").value);
+            if (isNaN(num) || num < 0) {
+                document.getElementById("factorial-result").innerText = "Por favor ingresa un número válido.";
+            } else {
+                let factorial = 1;
+                for (let i = 1; i <= num; i++) {
+                    factorial *= i;
+                }
+                document.getElementById("factorial-result").innerText = `El factorial de ${num} es: ${factorial}`;
+                document.getElementById("factorial-feedback").innerText = "¡Excelente! Estás mejorando.";
+            }
+        }
+
+        // Fibonacci
+        function generateFibonacci() {
+            const num = parseInt(document.getElementById("fibonacciInput").value);
+            if (isNaN(num) || num <= 0) {
+                document.getElementById("fibonacci-result").innerText = "Por favor ingresa un número válido.";
+            } else {
+                let fib = [0, 1];
+                for (let i = 2; i < num; i++) {
+                    fib.push(fib[i - 1] + fib[i - 2]);
+                }
+                document.getElementById("fibonacci-result").innerText = `Los primeros ${num} números de Fibonacci son: ${fib.join(', ')}`;
+                document.getElementById("fibonacci-feedback").innerText = "¡Genial! Sigue practicando.";
+            }
+        }
+
+        // Calculadora
+        function calculate(operation) {
+            const num1 = parseFloat(document.getElementById("num1").value);
+            const num2 = parseFloat(document.getElementById("num2").value);
+            let result;
+            
+            if (isNaN(num1) || isNaN(num2)) {
+                document.getElementById("calc-result").innerText = "¡Por favor ingresa dos números válidos!";
+                return;
+            }
+
+            switch(operation) {
+                case 'sum':
+                    result = num1 + num2;
+                    break;
+                case 'subtract':
+                    result = num1 - num2;
+                    break;
+                case 'multiply':
+                    result = num1 * num2;
+                    break;
+                case 'divide':
+                    if (num2 === 0) {
+                        result = "¡No se puede dividir entre cero!";
+                    } else {
+                        result = num1 / num2;
+                    }
+                    break;
+            }
+
+            document.getElementById("calc-result").innerText = `Resultado: ${result}`;
+            document.getElementById("calc-feedback").innerText = "¡Operación realizada correctamente!";
+        }
+
+        // Convertir Binario a Decimal
+        function convertBinToDecimal() {
+            const bin = document.getElementById("binToDecimal").value;
+            if (/^[01]+$/.test(bin)) {
+                const decimal = parseInt(bin, 2);
+                document.getElementById("binToDecimal-result").innerText = `Resultado: ${decimal}`;
+                document.getElementById("binToDecimal-feedback").innerText = "¡Conversión exitosa!";
+            } else {
+                document.getElementById("binToDecimal-result").innerText = "¡Por favor ingresa un número binario válido!";
+                document.getElementById("binToDecimal-feedback").innerText = "";
+            }
+        }
+
+        // Convertir Decimal a Binario
+        function convertDecimalToBin() {
+            const dec = parseInt(document.getElementById("decToBin").value);
+            if (!isNaN(dec) && dec >= 0) {
+                const binary = dec.toString(2);
+                document.getElementById("decToBin-result").innerText = `Resultado: ${binary}`;
+                document.getElementById("decToBin-feedback").innerText = "¡Conversión exitosa!";
+            } else {
+                document.getElementById("decToBin-result").innerText = "¡Por favor ingresa un número decimal válido!";
+                document.getElementById("decToBin-feedback").innerText = "";
+            }
+        }
+    </script>
+</body>
+</html>
+
+
