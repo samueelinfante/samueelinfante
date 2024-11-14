@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Ejercicios Interactivos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        nav a {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        .section {
+            display: none;
+            padding: 20px;
+            margin-top: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .active {
+            display: block;
+        }
+
+        .exercise-container {
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 10px;
+            margin: 5px 0;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .feedback {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .correct {
+            color: green;
+        }
+
+        .incorrect {
+            color: red;
+        }
+
+        h2, h3 {
+            color: #333;
+        }
+
+        .exercise-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .exercise-container button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .exercise-container button:hover {
+            background-color: #218838;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Plataforma de Ejercicios Interactivos</h1>
+    </header>
+
+    <!-- Menú de navegación -->
+    <nav>
+        <a href="#" onclick="showSection('inicio')">Inicio</a>
+        <a href="#" onclick="showSection('primaria')">Primaria</a>
+        <a href="#" onclick="showSection('secundaria')">Secundaria</a>
+        <a href="#" onclick="showSection('universidad')">Universidad</a>
+        <a href="#" onclick="showSection('sobreNosotros')">Sobre Nosotros</a>
+        <a href="#" onclick="showSection('contacto')">Contacto</a>
+    </nav>
+
+    <!-- Sección de Inicio -->
+    <div id="inicio" class="section active">
+        <h2>Bienvenido a la Plataforma de Ejercicios Interactivos</h2>
+        <p>Bienvenidos a nuestra plataforma educativa interactiva, diseñada para ayudar a estudiantes de todas las edades a aprender de manera divertida y efectiva. Explora nuestras secciones de Primaria y Secundaria, y mejora tus habilidades con ejercicios prácticos y contenido especializado. ¡Comienza tu aprendizaje hoy!.</p>
+    </div>
+
+    <!-- Sección Primaria -->
+    <div id="primaria" class="section">
+        <h2>Primaria</h2>
+
+        <!-- Ejercicio 1 -->
+        <div class="exercise-container">
+            <h3>1. Ejercicios Básicos de Secuencias</h3>
+            <p><strong>¿Cuál es el patrón en la secuencia 5, 10, 15, ...?</strong></p>
+            <input type="number" id="ejercicio1_1" class="btn" placeholder="Tu respuesta">
+            <button onclick="verificarSecuencia1()">Verificar</button>
+            <div id="feedback_sec1" class="feedback"></div>
+
+            <p><strong>¿Qué número sigue en la secuencia 10, 20, 30, ...?</strong></p>
+            <input type="number" id="ejercicio1_2" class="btn" placeholder="Tu respuesta">
+            <button onclick="verificarSecuencia2()">Verificar</button>
+            <div id="feedback_sec2" class="feedback"></div>
+
+            <p><strong>¿Cuál es el patrón en la secuencia 2, 4, 8, 16, ...?</strong></p>
+            <input type="number" id="ejercicio1_3" class="btn" placeholder="Tu respuesta">
+            <button onclick="verificarSecuencia3()">Verificar</button>
+            <div id="feedback_sec3" class="feedback"></div>
+        </div>
+
+        <!-- Ejercicio 2 -->
+        <div class="exercise-container">
+            <h3>2. Lógica de Comparaciones</h3>
+            <p><strong>¿Quién es mayor, Juan de 12 años o María de 14 años?</strong></p>
+            <input type="text" id="ejercicio2_1" class="btn" placeholder="Tu respuesta">
+            <button onclick="verificarComparacion1()">Verificar</button>
+            <div id="feedback_cmp1" class="feedback"></div>
+
+            <p><strong>¿Quién es más joven, Pedro de 9 años o Laura de 7 años?</strong></p>
+            <input type="text" id="ejercicio2_2" class="btn" placeholder="Tu respuesta">
+            <button onclick="verificarComparacion2()">Verificar</button>
+            <div id="feedback_cmp2" class="feedback"></div>
+        </div>
+
+        <!-- Ejercicio 3 -->
+        <div class="exercise-container">
+            <h3>3. Introducción a Condicionales</h3>
+            <p><strong>¿Qué tiene más superficie, una mesa de 1 m² o una alfombra de 2 m²?</strong></p>
+            <input type="text" id="ejercicio3_1" class="btn" placeholder="Tu respuesta">
+            <button onclick="verificarCondicional1()">Verificar</button>
+            <div id="feedback_cond1" class="feedback"></div>
+
+            <p><strong>¿Cuál es menor, un jardín de 10 m² o un balcón de 5 m²?</strong></p>
+            <input type="text" id="ejercicio3_2" class="btn" placeholder="Tu respuesta">
+            <button onclick="verificarCondicional2()">Verificar</button>
+            <div id="feedback_cond2" class="feedback"></div>
+
+            <p><strong>¿Qué recipiente puede contener más líquido, un vaso de 250 ml o una botella de 1 litro?</strong></p>
+            <input type="text" id="ejercicio3_3" class="btn" placeholder="Tu respuesta">
+            <button onclick="verificarCondicional3()">Verificar</button>
+            <div id="feedback_cond3" class="feedback"></div>
+        </div>
+    </div>
+
+    <!-- Sección Secundaria -->
+    <div id="secundaria" class="section">
+        <h2>Secundaria</h2>
+
+        <!-- Ejercicio 1 -->
+        <div class="exercise-container">
+            <h3>1. Ejercicios de Bucles</h3>
+            <p><strong>Suma de Números Naturales:</strong></p>
+            <input type="number" id="numero_nat" class="btn" placeholder="Ingresa un número">
+            <button onclick="sumarNumerosNaturales()">Calcular Suma</button>
+            <div id="feedback_nat" class="feedback"></div>
+
+            <p><strong>Secuencia de Fibonacci:</strong></p>
+            <input type="number" id="fibonacci_num" class="btn" placeholder="Ingresa un número">
+            <button onclick="generarFibonacci()">Generar Secuencia</button>
+            <div id="feedback_fibo" class="feedback"></div>
+
+            <p><strong>Tabla de Multiplicar:</strong></p>
+            <input type="number" id="numero_tabla" class="btn" placeholder="Ingresa un número">
+            <button onclick="mostrarTablaMultiplicar()">Mostrar Tabla</button>
+            <div id="feedback_tabla" class="feedback"></div>
+        </div>
+
+        <!-- Ejercicio 2 -->
+        <div class="exercise-container">
+            <h3>2. Bucles avanzados</h3>
+            <p><strong>Verificar números primos:</strong></p>
+            <input type="number" id="numero_primo" class="btn" placeholder="Ingresa un número">
+            <button onclick="verificarPrimo()">Verificar Primo</button>
+            <div id="feedback_primo" class="feedback"></div>
+
+            <p><strong>Verificar números perfectos:</strong></p>
+            <input type="number" id="numero_perfecto" class="btn" placeholder="Ingresa un número">
+            <button onclick="verificarPerfecto()">Verificar Perfecto</button>
+            <div id="feedback_perfecto" class="feedback"></div>
+        </div>
+    </div>
+
+    <!-- Sección Universidad -->
+    <div id="universidad" class="section">
+        <h2>Universidad</h2>
+
+        <!-- Ejercicio 1 -->
+        <div class="exercise-container">
+            <h3>1. Calculadora Interactiva</h3>
+            <input type="number" id="numero1_calc" class="btn" placeholder="Número 1">
+            <input type="number" id="numero2_calc" class="btn" placeholder="Número 2">
+            <button onclick="calcularOperacion('+')">Sumar</button>
+            <button onclick="calcularOperacion('-')">Restar</button>
+            <button onclick="calcularOperacion('*')">Multiplicar</button>
+            <button onclick="calcularOperacion('/')">Dividir</button>
+            <div id="feedback_calc" class="feedback"></div>
+        </div>
+
+        <!-- Ejercicio 2 -->
+        <div class="exercise-container">
+            <h3>2. Conversiones de Números</h3>
+            <input type="text" id="numero_binario" class="btn" placeholder="Ingresa número binario">
+            <button onclick="convertirBinario()">Convertir a Decimal</button>
+            <button onclick="convertirHexadecimal()">Convertir a Hexadecimal</button>
+            <div id="feedback_conversion" class="feedback"></div>
+        </div>
+
+        <!-- Ejercicio 3 -->
+        <div class="exercise-container">
+            <h3>3. Análisis de Texto</h3>
+            <textarea id="texto_analizar" rows="4" class="btn" placeholder="Ingresa un párrafo"></textarea>
+            <button onclick="analizarTexto()">Analizar Texto</button>
+            <div id="feedback_texto" class="feedback"></div>
+        </div>
+
+        <!-- Ejercicio 4 -->
+        <div class="exercise-container">
+            <h3>4. Manejo de Arreglos</h3>
+            <textarea id="arreglo_notas" rows="4" class="btn" placeholder="Ingresa notas separadas por coma"></textarea>
+            <button onclick="analizarArreglo()">Analizar Arreglo</button>
+            <div id="feedback_arreglo" class="feedback"></div>
+        </div>
+    </div>
+<!-- Sección Sobre Nosotros -->
+<div id="sobreNosotros" class="section">
+    <h2>Sobre Nosotros</h2>
+    Somos un grupo de estudiantes de la Universidad Estatal de Milagro (UNEMI) dedicados a crear una plataforma interactiva de aprendizaje. Nuestro objetivo es proporcionar herramientas educativas innovadoras para estudiantes de todos los niveles. Nos apasiona la educación y creemos que la tecnología puede facilitar el aprendizaje de manera más divertida y eficiente.</p>
+    <p>¡Gracias por elegirnos para mejorar tu aprendizaje! Si tienes alguna pregunta o sugerencia, no dudes en ponerte en contacto con nosotros.</p>
+</div>
+
+<!-- Sección Contacto -->
+<div id="contacto" class="section">
+    <h2>Contacto</h2>
+    <p>Si tienes alguna duda o deseas ponerte en contacto con nosotros, por favor llena el siguiente formulario:</p>
+    
+    <form id="contactForm">
+        <div class="exercise-container">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" class="btn" placeholder="Tu nombre" required>
+
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" class="btn" placeholder="Tu correo electrónico" required>
+
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" class="btn" rows="4" placeholder="Escribe tu mensaje" required></textarea>
+
+            <button type="submit">Enviar Mensaje</button>
+        </div>
+    </form>
+
+    <div id="feedback_contacto" class="feedback"></div>
+</div>
+    <script>
+        // Funciones de sección
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        // Ejercicios Primaria
+
+        // Ejercicio 1 Secuencias
+        function verificarSecuencia1() {
+            const respuesta = document.getElementById('ejercicio1_1').value;
+            const feedback = document.getElementById('feedback_sec1');
+            if (respuesta == 20) {
+                feedback.classList.add('correct');
+                feedback.textContent = "¡Correcto! El patrón es sumar 5.";
+            } else {
+                feedback.classList.add('incorrect');
+                feedback.textContent = "¡Incorrecto! Intenta nuevamente.";
+            }
+        }
+
+        function verificarSecuencia2() {
+            const respuesta = document.getElementById('ejercicio1_2').value;
+            const feedback = document.getElementById('feedback_sec2');
+            if (respuesta == 40) {
+                feedback.classList.add('correct');
+                feedback.textContent = "¡Correcto! El patrón es sumar 10.";
+            } else {
+                feedback.classList.add('incorrect');
+                feedback.textContent = "¡Incorrecto! Intenta nuevamente.";
+            }
+        }
+
+        function verificarSecuencia3() {
+            const respuesta = document.getElementById('ejercicio1_3').value;
+            const feedback = document.getElementById('feedback_sec3');
+            if (respuesta == 32) {
+                feedback.classList.add('correct');
+                feedback.textContent = "¡Correcto! El patrón es multiplicar por 2.";
+            } else {
+                feedback.classList.add('incorrect');
+                feedback.textContent = "¡Incorrecto! Intenta nuevamente.";
+            }
+        }
+
+        // Ejercicio 2 Comparaciones
+        function verificarComparacion1() {
+            const respuesta = document.getElementById('ejercicio2_1').value.toLowerCase();
+            const feedback = document.getElementById('feedback_cmp1');
+            if (respuesta === "maría") {
+                feedback.classList.add('correct');
+                feedback.textContent = "¡Correcto! María tiene 14 años.";
+            } else {
+                feedback.classList.add('incorrect');
+                feedback.textContent = "¡Incorrecto! Intenta nuevamente.";
+            }
+        }
+
+        function verificarComparacion2() {
+            const respuesta = document.getElementById('ejercicio2_2').value.toLowerCase();
+            const feedback = document.getElementById('feedback_cmp2');
+            if (respuesta === "laura") {
+                feedback.classList.add('correct');
+                feedback.textContent = "¡Correcto! Laura tiene 7 años.";
+            } else {
+                feedback.classList.add('incorrect');
+                feedback.textContent = "¡Incorrecto! Intenta nuevamente.";
+            }
+        }
+
+        // Ejercicio 3 Condicionales
+        function verificarCondicional1() {
+            const respuesta = document.getElementById('ejercicio3_1').value.toLowerCase();
+            const feedback = document.getElementById('feedback_cond1');
+            if (respuesta === "alfombra") {
+                feedback.classList.add('correct');
+                feedback.textContent = "¡Correcto! La alfombra tiene más superficie.";
+            } else {
+                feedback.classList.add('incorrect');
+                feedback.textContent = "¡Incorrecto! Intenta nuevamente.";
+            }
+        }
+
+        function verificarCondicional2() {
+            const respuesta = document.getElementById('ejercicio3_2').value.toLowerCase();
+            const feedback = document.getElementById('feedback_cond2');
+            if (respuesta === "balcón") {
+                feedback.classList.add('correct');
+                feedback.textContent = "¡Correcto! El balcón es más pequeño.";
+            } else {
+                feedback.classList.add('incorrect');
+                feedback.textContent = "¡Incorrecto! Intenta nuevamente.";
+            }
+        }
+
+        function verificarCondicional3() {
+            const respuesta = document.getElementById('ejercicio3_3').value.toLowerCase();
+            const feedback = document.getElementById('feedback_cond3');
+            if (respuesta === "botella") {
+                feedback.classList.add('correct');
+                feedback.textContent = "¡Correcto! La botella contiene más líquido.";
+            } else {
+                feedback.classList.add('incorrect');
+                feedback.textContent = "¡Incorrecto! Intenta nuevamente.";
+            }
+        }
+
+        // Ejercicios Secundaria
+
+        // Ejercicio 1 - Sumar Números Naturales
+        function sumarNumerosNaturales() {
+            const numero = parseInt(document.getElementById('numero_nat').value);
+            const feedback = document.getElementById('feedback_nat');
+            let suma = 0;
+            for (let i = 1; i <= numero; i++) {
+                suma += i;
+            }
+            feedback.classList.add('correct');
+            feedback.textContent = `La suma de los primeros ${numero} números naturales es: ${suma}`;
+        }
+
+        // Ejercicio 2 - Fibonacci
+        function generarFibonacci() {
+            const numero = parseInt(document.getElementById('fibonacci_num').value);
+            let fibo = [0, 1];
+            for (let i = 2; i < numero; i++) {
+                fibo.push(fibo[i - 1] + fibo[i - 2]);
+            }
+            const feedback = document.getElementById('feedback_fibo');
+            feedback.classList.add('correct');
+            feedback.textContent = `La secuencia de Fibonacci es: ${fibo.join(', ')}`;
+        }
+
+        // Ejercicio 3 - Tabla de Multiplicar
+        function mostrarTablaMultiplicar() {
+            const numero = parseInt(document.getElementById('numero_tabla').value);
+            const feedback = document.getElementById('feedback_tabla');
+            let tabla = "";
+            for (let i = 1; i <= 10; i++) {
+                tabla += `${numero} x ${i} = ${numero * i}<br>`;
+            }
+            feedback.classList.add('correct');
+            feedback.innerHTML = tabla;
+        }
+
+        // Ejercicios Universidad
+
+        // Ejercicio 1 - Calculadora
+        function calcularOperacion(operacion) {
+            const num1 = parseFloat(document.getElementById('numero1_calc').value);
+            const num2 = parseFloat(document.getElementById('numero2_calc').value);
+            const feedback = document.getElementById('feedback_calc');
+            let resultado;
+
+            switch (operacion) {
+                case '+':
+                    resultado = num1 + num2;
+                    break;
+                case '-':
+                    resultado = num1 - num2;
+                    break;
+                case '*':
+                    resultado = num1 * num2;
+                    break;
+                case '/':
+                    if (num2 === 0) {
+                        feedback.classList.add('incorrect');
+                        feedback.textContent = "¡Error! No se puede dividir entre 0, vuelve a ingresar algun numero.";
+                        return;
+                    }
+                    resultado = num1 / num2;
+                    break;
+                default:
+                    feedback.classList.add('incorrect');
+                    feedback.textContent = "¡Operación no válida!";
+                    return;
+            }
+
+            feedback.classList.add('correct');
+            feedback.textContent = `El resultado es: ${resultado}`;
+        }
+
+        // Ejercicio 2 - Conversiones de Números
+        function convertirBinario() {
+            const numeroBinario = document.getElementById('numero_binario').value;
+            const feedback = document.getElementById('feedback_conversion');
+            const decimal = parseInt(numeroBinario, 2);
+            feedback.classList.add('correct');
+            feedback.textContent = `El número binario ${numeroBinario} en decimal es: ${decimal}`;
+        }
+
+        function convertirHexadecimal() {
+            const numeroBinario = document.getElementById('numero_binario').value;
+            const feedback = document.getElementById('feedback_conversion');
+            const hexadecimal = parseInt(numeroBinario, 2).toString(16).toUpperCase();
+            feedback.classList.add('correct');
+            feedback.textContent = `El número binario ${numeroBinario} en hexadecimal es: ${hexadecimal}`;
+        }
+
+        // Ejercicio 3 - Análisis de Texto
+        function analizarTexto() {
+            const texto = document.getElementById('texto_analizar').value;
+            const feedback = document.getElementById('feedback_texto');
+            const numCaracteres = texto.length;
+            const numVocales = (texto.match(/[aeiouáéíóúAEIOUÁÉÍÓÚ]/g) || []).length;
+            const numPalabras = texto.split(/\s+/).length;
+            const numEspacios = (texto.match(/\s/g) || []).length;
+            const numSignos = (texto.match(/[.,?!;:]/g) || []).length;
+            const numDigitos = (texto.match(/\d/g) || []).length;
+
+            feedback.classList.add('correct');
+            feedback.innerHTML = `
+                Análisis del texto:<br>
+                Caracteres: ${numCaracteres}<br>
+                Vocales: ${numVocales}<br>
+                Palabras: ${numPalabras}<br>
+                Espacios: ${numEspacios}<br>
+                Signos de puntuación: ${numSignos}<br>
+                Dígitos: ${numDigitos}
+            `;
+        }
+
+        // Ejercicio 4 - Manejo de Arreglos
+        function analizarArreglo() {
+            const arregloNotas = document.getElementById('arreglo_notas').value.split(',').map(Number);
+            const feedback = document.getElementById('feedback_arreglo');
+            const promedio = arregloNotas.reduce((a, b) => a + b, 0) / arregloNotas.length;
+            const moda = obtenerModa(arregloNotas);
+            feedback.classList.add('correct');
+            feedback.innerHTML = `
+                Promedio: ${promedio}<br>
+                Moda: ${moda}
+            `;
+        }
+
+        function obtenerModa(arr) {
+            const frecuencias = {};
+            let maxFreq = 0;
+            let moda = null;
+
+            arr.forEach(num => {
+                frecuencias[num] = (frecuencias[num] || 0) + 1;
+                if (frecuencias[num] > maxFreq) {
+                    maxFreq = frecuencias[num];
+                    moda = num;
+                }
+            });
+
+            return moda;
+        }
+
+    </script>
+</body>
+</html>
+
+
+       
+
+
+
+
+
+
+
